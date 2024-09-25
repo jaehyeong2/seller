@@ -11,7 +11,6 @@ class SellerServiceImpl(
     private val sellerReader: SellerReader
 ) : SellerService {
 
-
     override fun findById(id: Long): SellerInfo.Detail {
         return sellerReader.findByIdOrThrow(id).let {
             SellerInfo.Detail(
