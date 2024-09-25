@@ -11,10 +11,6 @@ class SellerServiceImpl(
     private val sellerReader: SellerReader
 ) : SellerService {
 
-    @Transactional
-    override fun store(seller: Seller): Long {
-        return sellerRepository.save(seller).id!!
-    }
 
     override fun findById(id: Long): SellerInfo.Detail {
         return sellerReader.findByIdOrThrow(id).let {
@@ -26,5 +22,11 @@ class SellerServiceImpl(
                 updatedAt = it.updatedAt!!
             )
         }
+    }
+
+    @Transactional
+    override fun store(command: SellerCommand.Create): Long {
+        val seller = command.toEntity()
+        return sellerRepository.save(seller).id!!
     }
 }
