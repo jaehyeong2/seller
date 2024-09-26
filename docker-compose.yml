@@ -22,6 +22,18 @@ services:
     volumes:
       - postgres_product_data:/var/lib/postgresql/data
 
+  postgres_order:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: order_local
+      POSTGRES_USER: order_local
+      POSTGRES_PASSWORD: order_local
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_order_data:/var/lib/postgresql/data
+
 volumes:
   postgres_seller_data:
   postgres_product_data:
+  postgres_order_data:
