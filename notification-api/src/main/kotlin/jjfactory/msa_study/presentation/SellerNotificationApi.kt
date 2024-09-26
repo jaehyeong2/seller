@@ -14,6 +14,6 @@ class SellerNotificationApi(
 
     @PostMapping("/product")
     fun sendProductAddNotification() {
-        mailSender.sendProductAddNotification()
+        mailSender.sendProductRegisteredNotification()
     }
 }
