@@ -1,0 +1,24 @@
+spring:
+
+  # profile
+  profiles:
+    group:
+      production:
+        - production
+      develop:
+        - develop
+      local:
+        - local
+      default: local
+
+  # datasource
+  datasource:
+    driver-class-name: org.postgresql.Driver
+
+
+aws:
+  sesv2:
+    region: ap-northeast-2
+
+springdoc:
+  use-fqn: true
