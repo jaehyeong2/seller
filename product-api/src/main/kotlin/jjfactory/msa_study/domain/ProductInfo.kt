@@ -2,9 +2,10 @@ package jjfactory.msa_study.domain
 
 class ProductInfo {
     data class Detail(
+        val id: Long,
         val name: String,
         val sellerCode: String,
-        val groups: List<ProductOptionGroupInfo.Detail>
+        val groups: List<ProductOptionGroupInfo.Detail> = listOf()
     )
 }
 

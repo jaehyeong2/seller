@@ -11,7 +11,7 @@ class ProductServiceImpl(
 ) : ProductService {
 
     @Transactional
-    override fun registerProduct(command: ProductCommand.Create): Long {
+    override fun registerProduct(command: ProductCommand.Create): ProductInfo.Detail {
         val initProduct = command.toEntity()
 
         command.groups.forEach {
@@ -32,12 +32,19 @@ class ProductServiceImpl(
             }
         }
 
-        return productRepository.save(initProduct).id!!
+        val product = productRepository.save(initProduct)
+
+        return ProductInfo.Detail(
+            id= product.id!!,
+            name = product.name,
+            sellerCode = product.sellerCode
+        )
     }
 
     override fun findById(id: Long): ProductInfo.Detail {
         return productReader.findByIdOrThrow(id).let {
             ProductInfo.Detail(
+                id = it.id!!,
                 name = it.name,
                 sellerCode = it.sellerCode,
                 groups = it.optionGroups.map { og ->
