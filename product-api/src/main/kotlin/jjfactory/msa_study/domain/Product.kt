@@ -1,15 +1,20 @@
 package jjfactory.msa_study.domain
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 
 @Entity
 class Product(
     var name: String,
-    var sellerCode: String
+    val sellerCode: String,
 ) {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null
+
+    @OneToMany(mappedBy = "product", cascade = [CascadeType.ALL])
+    val optionGroups: MutableList<ProductOptionGroup> = mutableListOf()
+
+    fun addOptionGroup(optionGroup: ProductOptionGroup){
+        optionGroups.add(optionGroup)
+    }
 }

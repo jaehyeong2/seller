@@ -10,4 +10,11 @@ class ProductOptionGroup(
 ) {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null
+
+    @OneToMany(mappedBy = "optionGroup", cascade = [CascadeType.ALL])
+    val options: MutableList<ProductOption> = mutableListOf()
+
+    fun addOption(option: ProductOption){
+        options.add(option)
+    }
 }

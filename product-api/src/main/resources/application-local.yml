@@ -6,7 +6,7 @@ spring:
     activate:
       on-profile: local
   datasource:
-    url: jdbc:postgresql://localhost:5432/product_local
+    url: jdbc:postgresql://localhost:5433/product_local
     username: product_local
     password: product_local
 
