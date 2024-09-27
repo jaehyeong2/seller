@@ -4,7 +4,7 @@ class ProductCommand {
     data class Create(
         val name: String,
         val sellerCode: String,
-        val groups: List<ProductOptionGroupCommand.Create>
+        val groups: List<ProductOptionGroupCommand.Create> = listOf()
     ){
         fun toEntity(): Product {
             return Product(

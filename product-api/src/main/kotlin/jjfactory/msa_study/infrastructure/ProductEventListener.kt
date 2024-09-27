@@ -20,6 +20,6 @@ class ProductEventListener(
     @Async
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
     fun publishEventToKafka(event: ProductEvent.Create) {
-        kafkaTemplate.send("product_create", event.toString())
+        kafkaTemplate.send("product-register", event.toString())
     }
 }
