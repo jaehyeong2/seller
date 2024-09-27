@@ -1,4 +1,4 @@
-### 목표
+## 목표
 msa를 찍먹해보면서 왜 트래픽이 많은 테크 기업들이 거의 필수로 kafka / redis를 사용하는지 학습해본다.
 
 
@@ -85,7 +85,13 @@ volumes:
   postgres_product_data:
   postgres_order_data:
 
-
-
-
 ```
+
+## Redis
+다양한 자료구조를 지원하며, 싱글스레드로 동작하는 레디스는 캐싱 / 동시성 이슈 해결 / 디비 부하 분산 등 다양한 용도로 사용된다.
+
+### Api rate limiter
+
+### 중복 요청 제거
+
+
